@@ -1,8 +1,9 @@
+__author__ = 'Lesko'
 # main.py -- put your code here!
 import pyb
-from pyblib import MyLEDS
+from pyblib.leds import LEDS
 
-a = MyLEDS()
+a = LEDS()
 delay = 200
 while True:
     a.on()

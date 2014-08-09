@@ -1,7 +1,10 @@
+__author__ = 'Lesko'
 import pyb
- 
-class MyLEDS():
+
+
+class LEDS():
     def __init__(self, debug=False):
+        self.debug = debug
         self.leds = (pyb.LED(1), pyb.LED(2), pyb.LED(3), pyb.LED(4))
         self.led_state = [0, 0, 0, 0]
         self.off()
@@ -36,27 +39,42 @@ class MyLEDS():
             self._set_led_state(n, new_state)
     
     def on(self, ids=[]):
-        """Turn LEDs specified by their id [1, 2, 3, 4] on."""
+        """Turn LEDs specified by their id on.
+        ids = [1, 2, 3, 4]
+        ids = 2
+        """
+        if type(ids) is int and 0 < ids < 5:
+            ids = [ids]
         if len(ids) == 0:
             self._all_on()
         else:
-            for id in ids:
-                led = self.leds[id - 1]
+            for xid in ids:
+                led = self.leds[xid - 1]
                 led.on()
-                self._set_led_state(id - 1, 1)
+                self._set_led_state(xid - 1, 1)
     
     def off(self, ids=[]):
-        """Turn LEDs specified by their id [1, 2, 3, 4] off."""
+        """Turn LEDs specified by their id off.
+         ids = [1, 2, 3, 4]
+         ids = 2
+         """
+        if type(ids) is int and 0 < ids < 5:
+            ids = [ids]
         if len(ids) == 0:
             self._all_off()
         else:
-            for id in ids:
-                led = self.leds[id - 1]
+            for xid in ids:
+                led = self.leds[xid - 1]
                 led.off()
-                self._set_led_state(id - 1, 0)
+                self._set_led_state(xid - 1, 0)
     
     def toggle(self, ids=[]):
-        """Toggle LEDs specified by their id [1, 2, 3, 4] off."""
+        """Toggle LEDs specified by their id.
+         ids = [1, 2, 3, 4]
+         ids = 4
+         """
+        if type(ids) is int and 0 < ids < 5:
+            ids = [ids]
         if len(ids) == 0:
             self._all_toggle()
         else:
@@ -69,3 +87,8 @@ class MyLEDS():
     def print_state(self):
         print (self.led_state)
         return self.led_state
+
+if __name__ == '__main__':
+    a = LEDS()
+
+    a.on(2)
