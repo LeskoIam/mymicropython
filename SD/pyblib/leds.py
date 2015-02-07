@@ -83,7 +83,10 @@ class LEDS():
                 led.toggle()
                 new_state = 1 if not self.led_state[id - 1] else 0
                 self._set_led_state(id - 1, new_state)
-            
+
+    def delay(self, t):
+        pyb.delay(t*1000)
+
     def print_state(self):
         print (self.led_state)
         return self.led_state

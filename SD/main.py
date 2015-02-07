@@ -6,35 +6,26 @@ from pyblib.leds import LEDS
 a = LEDS()
 delay = 200
 while True:
-    a.on()
-    a.print_state()
-    pyb.delay(delay)
-    
-    a.off([2, 3, 1])
-    a.print_state()
-    pyb.delay(delay)
-    
-    a.toggle([4])
-    a.print_state()
-    pyb.delay(delay)
-    
-    a.toggle([1, 3, 2])
-    a.print_state()
-    pyb.delay(delay)
-    
-    a.toggle()
-    a.print_state()
-    pyb.delay(delay)
-    
+
+    print("off()")
     a.off()
-    a.print_state()
-    pyb.delay(delay)
-    
+    a.delay(1)
+
+    print("on()")
     a.on()
-    a.print_state()
-    pyb.delay(delay)
-    
-    a.off()
-    a.print_state()
-    pyb.delay(delay)
-    
+    a.delay(1)
+
+    print("off([1, 2])")
+    a.off([1, 2])
+    a.delay(1)
+
+    print("off(3)")
+    a.off(3)
+    a.delay(1)
+
+    print("on()")
+    a.on()
+    a.delay(1)
+
+
+
